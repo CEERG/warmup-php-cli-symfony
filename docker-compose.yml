@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+  php-cli:
+    build:
+      context: ./.docker/
+      dockerfile: ./php-cli/Dockerfile
+    container_name: php-cli
+    volumes:
+      - ./:/php-cli-api
+    restart: always
+    command: tail -f /dev/null
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"
